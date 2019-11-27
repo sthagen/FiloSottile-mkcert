@@ -72,7 +72,7 @@ brew install mkcert
 or build from source (requires Go 1.13+)
 
 ```
-git clone github.com/FiloSottile/mkcert
+git clone https://github.com/FiloSottile/mkcert
 go build -ldflags "-X main.Version=$(git describe --tags)"
 ```
 
@@ -142,6 +142,14 @@ To only install the local root CA into a subset of them, you can set the `TRUST_
 	-csr CSR
 	    Generate a certificate based on the supplied CSR. Conflicts with
 	    all other flags and arguments except -install and -cert-file.
+```
+
+> **Note:** You _must_ place these options before the domain names list.
+
+#### Example
+
+```
+mkcert -key-file key.pem -cert-file cert.pem example.com *.example.com
 ```
 
 ### S/MIME
